@@ -89,6 +89,17 @@ butterfly的包名是<a href="https://github.com/jerryc127/hexo-theme-butterfly"
 升级方法：在 **Hexo** 根目录下，运行 `npm update hexo-theme-butterfly`
 {% endnote %}
 <!-- endtab -->
-{% endtabs %}
+{% endtabs %}  
+## 应用主题
+修改Hexo根目录下的`_config.yml`，把主题改为`butterfly`  
+>theme: butterfly  
+## 安装插件
+主题需要安装pug以及stylus的渲染器，可用以下命令安装：
+```Powershell
+npm install hexo-renderer-pug hexo-renderer-stylus --save  
+```
+{% note info simple %}  
+Hexo及Butterfly的安装工作已经全部完成，后面开始主题的配置
+{% endnote %}
 
 
