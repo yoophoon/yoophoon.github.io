@@ -1,13 +1,13 @@
 ---
-title: 使用hexo及配置butterfly主题
+title: 使用hexo及配置butterfly主题(一)
 tags:
   - Hexo
   - Buttfly
   - Nodejs
   - Git
-categories: web
-keywords: web,html
-description: 前端的小文章
+categories: web,blog
+keywords: Hexo,Butterfly
+description: 学习Hexo&Butterfly的一些笔记
 date: 2022-06-15 21:05:05
 cover: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
 top_img: #
@@ -49,7 +49,11 @@ hexo init myblog
 //生成博客的静态文件
 hexo g
 //启动本地服务
-hexo g
+hexo s
+//清除本地静态文件
+hexo clean
+//部署博客
+hexo deploy
 ```
 ## Hexo配置
 浏览我们的博客时发现有些内容与我们所需要的不相符，这时就需要我们进行配置来生成我们自己的个性化博客了，使用VSCode打开文件博客目录下的`_config.yml`文件，并修改其对应的内容，下面是我自己的配置内容：
