@@ -52,7 +52,7 @@ hexo g
 hexo s
 //清除本地静态文件
 hexo clean
-//部署博客
+//部署博客，该命令需要安装部署插件，使用`npm install hexo-deployer-git --save`安装  
 hexo deploy
 ```
 ## Hexo配置
