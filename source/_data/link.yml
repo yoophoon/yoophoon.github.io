@@ -1,0 +1,31 @@
+- class_name: 友情链接
+  class_desc: AWESOME SITE
+  link_list:
+    - name: Hexo
+      link: https://hexo.io/zh-tw/
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: 快速、简单且强大的博客插件
+
+- class_name: 视频网站
+  class_desc: 欢乐、技术  这里都有
+  link_list:
+    - name: Bilibili
+      link: https://www.bilibili.com/
+      avatar: https://s2.loli.net/2022/06/13/bG9X5cTEkeSUoCB.png
+      descr: bilibili是国内知名的视频弹幕网站,这里有及时的动漫新番,活跃的ACG氛围,有创意的Up主。大家可以在这里找到许多欢乐。
+    - name: Youtube
+      link: https://www.youtube.com/
+      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
+      descr: Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.   
+
+- class_name: 其他网站
+  class_desc: 探索  仍在继续
+  link_list:      
+    - name: Weibo
+      link: https://www.weibo.com/
+      avatar: https://i.loli.net/2020/05/14/TLJBum386vcnI1P.png
+      descr: 中國最大社交分享平臺/中国最大社交分享平台
+    - name: Twitter
+      link: https://twitter.com/
+      avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
+      descr: 社交分享平臺/社交分享平台
