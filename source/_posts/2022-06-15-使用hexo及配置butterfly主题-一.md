@@ -46,6 +46,8 @@ npm install hexo-cli -g
 ```Bash
 //在博客存放的文件夹中创建并初始化博客
 hexo init myblog
+//根据 模板创建新的文章 模板位置为`./scaffolds`
+hexo new page "myFirstBlog"
 //生成博客的静态文件
 hexo g
 //启动本地服务

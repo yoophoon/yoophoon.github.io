@@ -3,12 +3,12 @@
 # --------------------------------------
 
 menu:
-  主页: / || fas fa-home
+  主页: /||fas fa-home
   博客: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
   清单||fas fa-list||hide:
-    音乐: /music/ || fas fa-music
+    音乐: /music/||fas fa-music
     电影: /movies/ || fas fa-video
   链接: /link/ || fas fa-link
   关于: /about/ || fas fa-heart
@@ -16,12 +16,12 @@ menu:
 # Code Blocks (代码块样式)
 # --------------------------------------
 
-highlight_theme: mac light #  darker / pale night / light / ocean / mac / mac light / false
-highlight_copy: true # copy button
-highlight_lang: true # show the code language
-highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
-highlight_height_limit: false # unit: px
-code_word_wrap: false # 代码自动换行
+highlight_theme: mac light #  代码块主题 可选：darker / pale night / light / ocean / mac / mac light / false
+highlight_copy: true # 是否显示复制按钮 copy button
+highlight_lang: true # 是否显示代码类型 show the code language
+highlight_shrink: false # 是否收起 true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
+highlight_height_limit: false # 高度限制 unit: px
+code_word_wrap: false # 是否自动换行
 
 # copy settings
 # copyright: Add the copyright information after copied content (複製的內容後面加上版權信息)
@@ -52,8 +52,8 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: false
-  preload: false
+  enable: true
+  preload: true
   CDN:
 
 # Math (數學)

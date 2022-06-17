@@ -105,3 +105,11 @@ deploy:
   type: git
   repo: git@gitee.com:yoophoon/yoophoon.git
   branch: master
+
+
+#setting for plugin hexo-generator-search
+search:
+  path: search.xml
+  field: all
+  content: true
+  template: #./search.xml
