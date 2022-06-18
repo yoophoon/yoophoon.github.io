@@ -10,10 +10,10 @@ keywords: Hexo,Butterfly,Blog
 description: 在Hexo框架及Butterfly主题都已经安装好之后，就可以进行个性化配置了，这篇博客记录下我的配置
 top_img: https://note.youdao.com/yws/api/personal/file/WEB94e77097cf15bbfc3ba5c045da678ac2?method=download&shareKey=29de4fac82c9c6ce2621d81ce5607f56
 cover: https://note.youdao.com/yws/api/personal/file/WEB94e77097cf15bbfc3ba5c045da678ac2?method=download&shareKey=29de4fac82c9c6ce2621d81ce5607f56
-mathjax:
-katex:
-toc:
-toc_number:
+mathjax: true
+katex: true
+toc: true
+toc_number: true
 toc_style_simple:
 copyright:
 copyright_author:
@@ -81,5 +81,117 @@ search:
   template: #./search.xml 搜索模板，可选设置
 ```
 {% note info modern %} 
-如果某些页面不想被搜索到可以在编写时`front matter`中添加`indexing: false`即可使该文章不被搜索
+如果某些页面不想被搜索到可以在编写时`front matter`中添加`indexing: false`即可使该文章不被检索
+{% endnote %} 
+# 数学(推荐使用KATEX)
+## 准备工作
+卸载对应的渲染器
+```BASH
+npm un hexo-renderer-marked --save # 如果有安裝這個的話，卸載
+npm un hexo-renderer-kramed --save # 如果有安裝這個的話，卸載
+
+npm i hexo-renderer-markdown-it --save # 需要安裝這個渲染插件
+npm install @neilsustc/markdown-it-katex --save #需要安裝這個katex插件
+```
+配置根目录的_config.yml
+```YAML
+markdown:
+  plugins:
+    - plugin:
+      name: '@neilsustc/markdown-it-katex'
+      options:
+        strict: false
+```
+## 编写公式
+{% note info modern %} 
+相关的书写格式可以参考[支持格式](https://katex.org/docs/support_table.html)
 {% endnote %}
+$x^2+y^2+Dx+Ey+F=0$  
+
+$\begin{align} a&=b+c \\ d+e&=f \end{align}$  
+
+$\begin{Bmatrix*}[r] 0 & -1 \\ -1 & 0 \end{Bmatrix*}$  
+# 图片设置
+设置看主题配置文件`_config.butterfly.yml`即可，这里不做赘述
+# 字数统计
+## 安装插件
+要实现字数统计需要安装`hexo-wordcount`插件，安装命令为`npm install hexo-wordcount --save`
+{% note warning modern %} 
+未安装插件在生成博客时会报错
+{% endnote %}
+## 设置主题配置文件
+```YAML
+wordcount:
+  enable: true
+  post_wordcount: true
+  min2read: true
+  total_wordcount: true
+```
+---
+# 图片描述
+`photofigcaption`是用来设置是否 显示图片描述文字的，false则不显示文字，true则显示文字  
+![图片](https://note.youdao.com/yws/api/personal/file/WEB94e77097cf15bbfc3ba5c045da678ac2?method=download&shareKey=29de4fac82c9c6ce2621d81ce5607f56)
+{% note info modern %} 
+推荐将该属性设置为`true`，如不需显示文字可在[]中留空即可
+{% endnote %}
+# 绘制图表
+使用mermaid标签可以绘制Flowchart（流程图）、Sequence diagram（时序图 ）、Class Diagram（类别图）、State Diagram（状态图）、Gantt（甘特图）和Pie Chart（圆形图），具体可以查看[mermaid文档](https://mermaid-js.github.io/mermaid/#/)
+使用前修改配置文件_config.butterfly.yml
+```YML
+mermaid:
+  enable: true
+  # built-in themes: default/forest/dark/neutral
+  theme:
+    light: default
+    dark: dark
+```
+{% tabs mermaid用法 %}
+<!-- tab 饼图-->
+```YAML
+{% mermaid %}
+pie
+    title Key elements in Product X
+    "Calcium" : 42.96
+    "Potassium" : 50.05
+    "Magnesium" : 10.01
+    "Iron" :  5
+{% endmermaid %}
+```
+{% mermaid %}
+pie
+    title Key elements in Product X
+    "Calcium" : 42.96
+    "Potassium" : 50.05
+    "Magnesium" : 10.01
+    "Iron" :  5
+{% endmermaid %}
+<!-- endtab -->
+<!-- tab 流程图-->
+```YAML
+{% mermaid %} 
+journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 5: Me
+{% endmermaid %}
+```
+{% mermaid %} 
+journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 5: Me
+{% endmermaid %}
+<!-- endtab -->
+{% endtabs %}
+
+
