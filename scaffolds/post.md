@@ -1,6 +1,9 @@
 ---
 title: {{ title }}  #必须设置 页面标题
 date: {{ date }}    #必须设置 文档日期
+
+---
+
 updated:            #文章更新日期
 tags:
   - tag1            #标签1
@@ -28,6 +31,5 @@ copyright_info:
 aplayer:
 highlight_shrink:
 aside:
----
 
 
