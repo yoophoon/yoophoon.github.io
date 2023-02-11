@@ -2,7 +2,7 @@
 title: {{ title }}  #必须设置 页面标题
 date: {{ date }}    #必须设置 文档日期
 
----
+
 
 updated:            #文章更新日期
 tags:
@@ -13,7 +13,7 @@ keywords:           #关键字
 description:        #描述
 top_img:            #博客页面顶部图片
 cover:              #博客缩略图，显示在首页目录
-
+---
 mathjax:
 katex:
 
