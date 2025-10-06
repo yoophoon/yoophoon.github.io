@@ -1,11 +1,14 @@
 ---
+layout: post
 title: 使用hexo及配置butterfly主题(一)
 tags:
   - Hexo
   - Buttfly
   - Nodejs
   - Git
-categories: web,blog
+categories:
+  - web
+  - blog
 keywords: Hexo,Butterfly
 description: 学习Hexo&Butterfly的一些笔记
 date: 2022-06-15 21:05:05

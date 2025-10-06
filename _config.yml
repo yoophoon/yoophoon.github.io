@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -112,10 +112,10 @@ deploy:
 
 #setting for plugin hexo-generator-search
 search:
-  path: search.xml
-  field: all
+  path: search.json
+  field: post
   content: true
-  template: #./search.xml
+  format: striptags
 
 #setting for plugin KATEX
 markdown:

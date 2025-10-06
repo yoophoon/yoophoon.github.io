@@ -49,11 +49,15 @@ algolia_search:
   enable: false
   hits:
     per_page: 6
-
+search:
+  use: local_search
+  placeholder: 也许会有好东西
 # Local search
 local_search:
-  enable: true
-  preload: true
+#  enable: true
+  preload: false
+  top_n_per_article: 1
+  unescape: false
   CDN:
 
 # Math (數學)
