@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CAD源泉插件学习笔记 | yoophoon</title><meta name="author" content="yoophoon"><meta name="copyright" content="yoophoon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="工欲善其事，必先利其器。   --《论语·魏灵公》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CAD源泉插件学习笔记">
+<meta property="og:url" content="http://yoophoon.gitee.io/posts/4c27756/index.html">
+<meta property="og:site_name" content="yoophoon">
+<meta property="og:description" content="工欲善其事，必先利其器。   --《论语·魏灵公》">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/06/14/2LBYHUI3m7A8vGt.jpg">
+<meta property="article:published_time" content="2022-07-08T09:18:24.000Z">
+<meta property="article:modified_time" content="2025-10-07T16:28:36.788Z">
+<meta property="article:author" content="yoophoon">
+<meta property="article:tag" content="AutoCAD">
+<meta property="article:tag" content="源泉插件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/06/14/2LBYHUI3m7A8vGt.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CAD源泉插件学习笔记",
+  "url": "http://yoophoon.gitee.io/posts/4c27756/",
+  "image": "https://s2.loli.net/2022/06/14/2LBYHUI3m7A8vGt.jpg",
+  "datePublished": "2022-07-08T09:18:24.000Z",
+  "dateModified": "2025-10-07T16:28:36.788Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yoophoon",
+      "url": "http://yoophoon.gitee.io/yoophoon.gitee.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/asset/favicon.png"><link rel="canonical" href="http://yoophoon.gitee.io/posts/4c27756/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CAD源泉插件学习笔记',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2022/06/14/2LBYHUI3m7A8vGt.jpg" onerror="this.onerror=null;this.src='/null'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">yoophoon</span></a><a class="nav-page-title" href="/"><span class="site-name">CAD源泉插件学习笔记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">CAD源泉插件学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-08T09:18:24.000Z" title="发表于 2022-07-08 17:18:24">2022-07-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-07T16:28:36.788Z" title="更新于 2025-10-08 00:28:36">2025-10-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CAD%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">CAD学习之路</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CAD%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/%E6%BA%90%E6%B3%89%E6%8F%92%E4%BB%B6/">源泉插件</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2025-10-08 00:28:36&quot;}" hidden></div><h1 id="源泉插件学习笔记"><a href="#源泉插件学习笔记" class="headerlink" title="源泉插件学习笔记"></a>源泉插件学习笔记</h1><h2 id="关于源泉设计"><a href="#关于源泉设计" class="headerlink" title="关于源泉设计"></a>关于源泉设计</h2><blockquote>
+<p><strong>源泉设计</strong> 作者系建筑师，自90年代初起，在长期的建筑设计、装饰设计绘图中积累了一些经验和编写了一些AutoLisp程序，当这些小程序开始越来越多的时候便有组织地规划整理为一套辅助软件，在单位小范围内使用。2001年与迷你建筑工具的作者Mai.c.y交流过源码，糅合了迷你建筑工具的许多功能，后来又在rjw的帮助下添加了不少实用小程序，软件整体功能和易用性大增。2005年起，软件起名为“源泉建筑”，上传互联网上供大家免费下载使用。随着软件功能的不断积累壮大，喜爱使用“源泉建筑”的人越来越多。后来由于装饰部分工具大增，自6.3.6版(2014年7月)起“源泉建筑”改名为“源泉设计”。</p>
+<p>时至今日，经过20多年的发展，“源泉设计”越来越成熟，结构越来越合理，已经成为一个易用、易定制、快捷、强大的建筑、装饰相关专业制图工具。</p>
+<p>在软件编写期间很多人提供了宝贵的意见，作者在此表示衷心的感谢。</p>
+</blockquote>
+<p>先默默的给林总点个赞  [b(￣▽￣)d]，以表仰慕、敬意~</p>
+<h2 id="源泉设计功能"><a href="#源泉设计功能" class="headerlink" title="源泉设计功能"></a>源泉设计功能</h2><div class="note info modern"><p>记录主要参照<a target="_blank" rel="noopener" href="http://www.yqarch.cn/course/yqshow_%E6%BA%90%E6%B3%89%E5%8A%A0%E5%BC%BA%E7%89%88%E5%B8%AE%E5%8A%A9%E6%96%87%E4%BB%B6v6.6.8_20190330.chm">源泉插件的详细帮助</a>，查阅文档是学习使用工具最直接有效的方法,<a target="_blank" rel="noopener" href="http://www.yqarch.cn/">官网</a>也有很多资料可以查阅。</p>
+</div>
+<h3 id="系统设定"><a href="#系统设定" class="headerlink" title="系统设定"></a>系统设定</h3><h4 id="用户系统配置"><a href="#用户系统配置" class="headerlink" title="用户系统配置"></a>用户系统配置</h4><blockquote>
+<p>快捷键<code>yqsys</code>  </p>
+</blockquote>
+<p>该配置其实是 <code>$YQArch\sys\user*\config.txt</code> 文件，各项参数后面均有注释，直接编辑<code>config.txt</code>与菜单修改最终效果一致，但通过菜单的方式修改退出后能直接将已打开的CAD图纸进行更新，而编辑<code>config.txt</code>则需重新启动CAD软件。</p>
+<blockquote>
+<p>系统配置里有许多的值为软件自带的变量，如：箭头样式可直接使用 DIMBLK 系统变量的值。<br>源泉插件也创建了许多系统变量，但作者未公开，如果公开了这些数据，基于源泉插件进行定制功能要轻松的许多，后续会接触到这些未被公开的系统变量。</p>
+</blockquote>
+<h4 id="源泉设计命令总览"><a href="#源泉设计命令总览" class="headerlink" title="源泉设计命令总览"></a>源泉设计命令总览</h4><blockquote>
+<p>快捷键<code>yq\yy</code></p>
+</blockquote>
+<p>作用为查看所有源泉命令及其快捷键&lt;<code>yq</code>&gt;或自定义源泉菜单的快捷键，该命令还可以对命令组进行编辑&lt;<code>yy</code>&gt;。</p>
+<h4 id="源泉图像按钮"><a href="#源泉图像按钮" class="headerlink" title="源泉图像按钮"></a>源泉图像按钮</h4><blockquote>
+<p>快捷键<code>tba\tbaf</code></p>
+</blockquote>
+<p>开启或关闭源泉菜单的图标按钮，习惯使用图像按钮的话可以打开&lt;<code>tba</code>&gt;，当然习惯了快捷键的话也可以将图像按钮关闭&lt;<code>tbaf</code>&gt;</p>
+<h4 id="切换当前用户"><a href="#切换当前用户" class="headerlink" title="切换当前用户"></a>切换当前用户</h4><blockquote>
+<p>快捷键<code>yquser</code></p>
+</blockquote>
+<p>该菜单用于切换用户配置，大多数情况只需配置一个用户即可，但如果牵扯到多专业的话，我们可以分别为每个专业配置一个专业用户，这样我们就不必重复的去配置源泉插件，只需切换用户，其用户配置也一同切换了。</p>
+<h4 id="切换提示语言"><a href="#切换提示语言" class="headerlink" title="切换提示语言"></a>切换提示语言</h4><blockquote>
+<p>快捷键<code>yqlang</code></p>
+</blockquote>
+<p>林大还是牛逼，专门为插件适配了英语</p>
+<div class="note info modern"><p>实际上大多数工程软件早期版本的语言都是英文的，只是后续进入中国市场后才进行的汉化，而想要在此类软件上进行二次开发，英语是必要的</p>
+</div>
+<h4 id="设定绘图单位"><a href="#设定绘图单位" class="headerlink" title="设定绘图单位"></a>设定绘图单位</h4><blockquote>
+<p>快捷键<code>yqunits</code></p>
+</blockquote>
+<p>这个菜单内置了 毫米、厘米、分米、米、英寸 四种单位格式，如果 CAD格式&gt;单位 如果也是设置了这四种单位，源泉的绘图单位会自动设置成一样的单位</p>
+<div class="note info modern"><p>这个设定引用了CAD的系统变量：INSUNITS</p>
+</div>
+
+<h4 id="加载源泉菜单"><a href="#加载源泉菜单" class="headerlink" title="加载源泉菜单"></a>加载源泉菜单</h4><blockquote>
+<p>快捷键<code>yqmenu</code></p>
+</blockquote>
+<p>猜测菜单栏没源泉设计按钮时使用</p>
+<h4 id="设定图纸-符号比例"><a href="#设定图纸-符号比例" class="headerlink" title="设定图纸\符号比例"></a>设定图纸\符号比例</h4><blockquote>
+<p>快捷键<code>sd</code></p>
+</blockquote>
+<p>设定图纸比例及缩放相关符号</p>
+<div class="note info modern"><p>前面提到过源泉的系统变量，这个源泉设置绘图单位也是: </p>
+</div>
+<h4 id="绘制图框"><a href="#绘制图框" class="headerlink" title="绘制图框"></a>绘制图框</h4><blockquote>
+<p>快捷键<code>tk</code></p>
+</blockquote>
+<p>快速生成图框，这个好玩的地方在于可以定制图框，有时间的话就补这个坑。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><table>
+<thead>
+<tr>
+<th align="center">菜单</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">详细帮助</td>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.yqarch.cn/course/yqshow_%E6%BA%90%E6%B3%89%E5%8A%A0%E5%BC%BA%E7%89%88%E5%B8%AE%E5%8A%A9%E6%96%87%E4%BB%B6v6.6.8_20190330.chm">源泉的一些重要功能的帮助文档</a></td>
+</tr>
+<tr>
+<td align="center">源泉版本号</td>
+<td align="left">控制台输出源泉插件的版本号</td>
+</tr>
+<tr>
+<td align="center">源泉设计网站</td>
+<td align="left"><a target="_blank" rel="noopener" href="http://yqarch.cn/">yqarch.cn</a></td>
+</tr>
+<tr>
+<td align="center">截图教程网站</td>
+<td align="left"><a target="_blank" rel="noopener" href="http://bigd.ys168.com/">bigd.ys168.com</a></td>
+</tr>
+<tr>
+<td align="center">赞助与支持</td>
+<td align="left">林大可能不缺这点钱，当如果确实有用，可以通过赞助以表示对软件的肯定</td>
+</tr>
+<tr>
+<td align="center">源于源泉</td>
+<td align="left">软件的一些信息及交流圈子信息</td>
+</tr>
+<tr>
+<td align="center">卸载源泉设计</td>
+<td align="left">不要动</td>
+</tr>
+</tbody></table>
+<h3 id="平面墙柱"><a href="#平面墙柱" class="headerlink" title="平面墙柱"></a>平面墙柱</h3><p>后面有时间再写，2022年7月9日 20:47记</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="yoophoon.gitee.io">yoophoon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yoophoon.gitee.io/posts/4c27756/">http://yoophoon.gitee.io/posts/4c27756/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://yoophoon.gitee.io" target="_blank">yoophoon</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AutoCAD/">AutoCAD</a><a class="post-meta__tags" href="/tags/%E6%BA%90%E6%B3%89%E6%8F%92%E4%BB%B6/">源泉插件</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2022/06/14/2LBYHUI3m7A8vGt.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/45784b6a/" title="CAD初始配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">CAD初始配置</div></div><div class="info-2"><div class="info-item-1">打造一个趁手的、好用的CAD</div></div></div></a><a class="pagination-related" href="/posts/4948a004/" title="使用hexo及配置butterfly主题(二)"><img class="cover" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/null'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">使用hexo及配置butterfly主题(二)</div></div><div class="info-2"><div class="info-item-1">在Hexo框架及Butterfly主题都已经安装好之后，就可以进行个性化配置了，这篇博客记录下我的配置</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/45784b6a/" title="CAD初始配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-31</div><div class="info-item-2">CAD初始配置</div></div><div class="info-2"><div class="info-item-1">打造一个趁手的、好用的CAD</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BA%90%E6%B3%89%E6%8F%92%E4%BB%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">源泉插件学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%BA%90%E6%B3%89%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">关于源泉设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E6%B3%89%E8%AE%BE%E8%AE%A1%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.</span> <span class="toc-text">源泉设计功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">系统设定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">用户系统配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BA%90%E6%B3%89%E8%AE%BE%E8%AE%A1%E5%91%BD%E4%BB%A4%E6%80%BB%E8%A7%88"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">源泉设计命令总览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BA%90%E6%B3%89%E5%9B%BE%E5%83%8F%E6%8C%89%E9%92%AE"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">源泉图像按钮</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">切换当前用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E6%8F%90%E7%A4%BA%E8%AF%AD%E8%A8%80"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">切换提示语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E5%AE%9A%E7%BB%98%E5%9B%BE%E5%8D%95%E4%BD%8D"><span class="toc-number">1.2.1.6.</span> <span class="toc-text">设定绘图单位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E6%BA%90%E6%B3%89%E8%8F%9C%E5%8D%95"><span class="toc-number">1.2.1.7.</span> <span class="toc-text">加载源泉菜单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E5%AE%9A%E5%9B%BE%E7%BA%B8-%E7%AC%A6%E5%8F%B7%E6%AF%94%E4%BE%8B"><span class="toc-number">1.2.1.8.</span> <span class="toc-text">设定图纸\符号比例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%9B%BE%E6%A1%86"><span class="toc-number">1.2.1.9.</span> <span class="toc-text">绘制图框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.2.1.10.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E9%9D%A2%E5%A2%99%E6%9F%B1"><span class="toc-number">1.2.2.</span> <span class="toc-text">平面墙柱</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2025 By yoophoon</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.0.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div><div class="footer_custom_text">人家是有底线的嘛 ～</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="也许会有好东西" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.1"></script></div></div></body></html>

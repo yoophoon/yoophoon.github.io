@@ -1,0 +1,1 @@
+{"name":"for_hexo","version":"1.0.0","description":"使用pnpm的脚本，方便hexo-cli操作","main":"index.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1","g":"cd .. && hexo g","s":"cd .. && pnpm run server"},"keywords":[],"author":"","license":"ISC","packageManager":"pnpm@10.18.0"}
